@@ -75,6 +75,9 @@ sub writeData {
     my ($DiseaseName, $DiseaseID, $AltDiseaseIDs, $Definition, $ParentIDs,
 	$TreeNumbers, $ParentTreeNumbers, $Synonyms, $SlimMappings) = @$cols;
 
+    my ($db, $localID) = split(":", $DiseaseID);
+    return 0 if $db ne "MESH";
+    
     # Write disease name
     writeLine( $ofh, $DiseaseName, $DiseaseID, $ParentIDs, "1" );
 
